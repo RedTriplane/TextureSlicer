@@ -1,6 +1,7 @@
 package com.jfixby.texture.slicer.api;
 
 import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.filesystem.File;
 import com.jfixby.cmns.api.filesystem.FileSystem;
 import com.jfixby.cmns.api.path.AbsolutePath;
 
@@ -10,7 +11,7 @@ public interface TextureSlicerSpecs {
 
 	public static final String TILE_MAP_FILE_EXTENSION = "r3-trs";
 
-	void setInputFilePath(AbsolutePath<FileSystem> png_file);
+	void setInputFile(File input_file);
 
 	void setTileWidth(int tile_width);
 
@@ -18,11 +19,11 @@ public interface TextureSlicerSpecs {
 
 	void setNameSpacePrefix(AssetID newAssetID);
 
-	void setOutputFolderPath(AbsolutePath<FileSystem> parent);
+	void setOutputFolder(File parent);
 
 	void setMargin(int margin);
 
-	public AbsolutePath<FileSystem> getInputFilePath();
+	public File getInputFile();
 
 	public int getTileWidth();
 
@@ -30,7 +31,7 @@ public interface TextureSlicerSpecs {
 
 	public AssetID getNameSpacePrefix();
 
-	public AbsolutePath<FileSystem> getOutputFolderPath();
+	public File getOutputFolder();
 
 	public int getMargin();
 

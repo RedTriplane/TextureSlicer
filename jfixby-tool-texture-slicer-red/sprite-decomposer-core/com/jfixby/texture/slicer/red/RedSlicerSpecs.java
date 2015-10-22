@@ -1,38 +1,35 @@
 package com.jfixby.texture.slicer.red;
 
 import com.jfixby.cmns.api.assets.AssetID;
-import com.jfixby.cmns.api.filesystem.FileSystem;
-import com.jfixby.cmns.api.path.AbsolutePath;
+import com.jfixby.cmns.api.filesystem.File;
 import com.jfixby.texture.slicer.api.TextureSlicerSpecs;
 
 public class RedSlicerSpecs implements TextureSlicerSpecs {
 
 	@Override
 	public String toString() {
-		return "[inputFilePath=" + inputFilePath
-				+ ", tileWidth=" + tileWidth + ", tileHeight=" + tileHeight
-				+ ", nameSpacePrefix=" + nameSpacePrefix
-				+ ", outputFolderPath=" + outputFolderPath
+		return "[inputFile=" + inputFile + ", tileWidth=" + tileWidth
+				+ ", tileHeight=" + tileHeight + ", nameSpacePrefix="
+				+ nameSpacePrefix + ", outputFolder=" + outputFolder
 				+ ", compositionStructureOutputFileName="
 				+ compositionStructureOutputFileName + ", margin=" + margin
 				+ "]";
 	}
 
-	AbsolutePath<FileSystem> inputFilePath;
+	File inputFile;
 	int tileWidth = 128;
 	int tileHeight = 128;
 	AssetID nameSpacePrefix;
-	AbsolutePath<FileSystem> outputFolderPath;
+	File outputFolder;
 	String compositionStructureOutputFileName;
 	int margin = 1;
 
-	public AbsolutePath<FileSystem> getInputFilePath() {
-		return inputFilePath;
+	public File getInputFile() {
+		return inputFile;
 	}
 
-	public void setInputFilePath(
-			AbsolutePath<FileSystem> inputFilePath) {
-		this.inputFilePath = inputFilePath;
+	public void setInputFile(File inputFile) {
+		this.inputFile = inputFile;
 	}
 
 	public int getTileWidth() {
@@ -59,13 +56,12 @@ public class RedSlicerSpecs implements TextureSlicerSpecs {
 		this.nameSpacePrefix = nameSpacePrefix;
 	}
 
-	public AbsolutePath<FileSystem> getOutputFolderPath() {
-		return outputFolderPath;
+	public File getOutputFolder() {
+		return outputFolder;
 	}
 
-	public void setOutputFolderPath(
-			AbsolutePath<FileSystem> outputFolderPath) {
-		this.outputFolderPath = outputFolderPath;
+	public void setOutputFolder(File outputFolder) {
+		this.outputFolder = outputFolder;
 	}
 
 	public String getCompositionStructureOutputFileName() {

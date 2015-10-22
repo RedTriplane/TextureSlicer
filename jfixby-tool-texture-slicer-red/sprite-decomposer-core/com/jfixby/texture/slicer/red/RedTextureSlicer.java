@@ -36,9 +36,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 
 		L.d(specs);
 
-		AbsolutePath<FileSystem> input_path = specs.getInputFilePath();
-		JUtils.checkNull("input_path", input_path);
-		File input_file = input_path.getMountPoint().newFile(input_path);
+		File input_file = specs.getInputFile();
 		if (!input_file.isFile()) {
 			throw new Error("Bad file: " + input_file);
 		}
@@ -52,12 +50,11 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		AssetID namespace = specs.getNameSpacePrefix();
 		JUtils.checkNull("NameSpacePrefix", namespace);
 
-		AbsolutePath<FileSystem> output_folder = specs.getOutputFolderPath();
+		File output_folder = specs.getOutputFolder();
 		if (output_folder == null) {
-			output_folder = input_path.parent();
+			output_folder = input_file.parent();
 		}
-
-		output_folder.getMountPoint().newFile(output_folder).makeFolder();
+		output_folder.makeFolder();
 
 		SlicesCompositionInfo structure = new SlicesCompositionInfo();
 
@@ -148,10 +145,9 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 
 	private void process(int i, int j, int tile_width, int tile_height,
 			int margin, BufferedImage java_image, String namespace,
-			AbsolutePath<FileSystem> output_folder, int k,
-			SlicesCompositionInfo structure, int tile_actual_width,
-			int tile_actual_height, RedSlicerResult result)
-			throws IOException {
+			File output_folder, int k, SlicesCompositionInfo structure,
+			int tile_actual_width, int tile_actual_height,
+			RedSlicerResult result) throws IOException {
 		int index_top_left_x = i * tile_width;
 		int index_top_left_y = j * tile_height;
 		// L.d("dot", "(" + index_top_left_x + ";" + index_top_left_y
@@ -175,13 +171,10 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 
 		k++;
 		if (!is_empty) {
-			AbsolutePath<FileSystem> tile_path = output_folder.child(tile_name
-					+ ".png");
-			File output_tile_name = tile_path.getMountPoint()
-					.newFile(tile_path);
-			L.d("writing", output_tile_name);
+			File tile_path = output_folder.child(tile_name + ".png");
+			L.d("writing", tile_path);
 
-			ImageProcessing.writeJavaFile(java_tile, output_tile_name, "PNG");
+			ImageProcessing.writeJavaFile(java_tile, tile_path, "PNG");
 		} else {
 			L.d("dropping empty_raster", postfix);
 		}
