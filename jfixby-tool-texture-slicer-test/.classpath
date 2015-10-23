@@ -7,7 +7,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-red-desktop"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-tool-texture-slicer-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-tool-texture-slicer-red"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-adopted-gdx"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/gdx-jfixby-cmns"/>
 	<classpathentry kind="lib" path="/libs/gdx-1.6.3/gdx-1.6.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
