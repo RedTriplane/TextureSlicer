@@ -9,8 +9,8 @@ import com.jfixby.cmns.api.collections.JUtils;
 import com.jfixby.cmns.api.color.Color;
 import com.jfixby.cmns.api.color.Colors;
 import com.jfixby.cmns.api.filesystem.File;
-import com.jfixby.cmns.api.image.ColorFunction;
-import com.jfixby.cmns.api.image.ColorFunctionSpecs;
+import com.jfixby.cmns.api.image.ColorMap;
+import com.jfixby.cmns.api.image.ColorMapSpecs;
 import com.jfixby.cmns.api.image.ImageProcessing;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.math.IntegerMath;
@@ -61,7 +61,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		structure.composition_asset_id_string = (namespace_string);
 
 		L.d("reading", input_file);
-		BufferedImage java_image = ImageGWT.readJavaImage(input_file);
+		BufferedImage java_image = ImageGWT.readFromFile(input_file);
 
 		int image_height = java_image.getHeight();
 		int image_width = java_image.getWidth();
@@ -140,14 +140,14 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		int index_bottom_right_x = (1 + i) * tile_width - 1;
 		int index_bottom_right_y = (1 + j) * tile_height - 1;
 
-		ColorFunctionSpecs cf_specs = ImageProcessing.newColorFunctionSpecs();
+		ColorMapSpecs cf_specs = ImageProcessing.newColorMapSpecs();
 		cf_specs.setWidth(tile_actual_width);
 		cf_specs.setHeight(tile_actual_height);
 
-		ColorFunction cf = ImageProcessing.newColorFunction(cf_specs);
+		ColorMap cf = ImageProcessing.newArrayColorMap(cf_specs);
 		boolean is_empty = copy(index_top_left_x, index_top_left_y, index_bottom_right_x, index_bottom_right_y, cf, java_image, margin);
 
-		BufferedImage java_tile = cf.toJavaImage();
+		BufferedImage java_tile = ImageGWT.toGWTImage(cf);
 		String postfix = "tile-" + i + "-" + j;
 		String tile_name = namespace + "." + postfix;
 		result.addTile(Names.newAssetID(tile_name));
@@ -157,7 +157,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 			File tile_path = output_folder.child(tile_name + ".png");
 			L.d("writing", tile_path);
 
-			ImageGWT.writeJavaFile(java_tile, tile_path, "PNG");
+			ImageGWT.writeToFile(java_tile, tile_path, "PNG");
 		} else {
 			L.d("dropping empty_raster", postfix);
 		}
@@ -165,7 +165,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 
 	}
 
-	private boolean copy(int index_top_left_x, int index_top_left_y, int index_bottom_right_x, int index_bottom_right_y, ColorFunction cf, BufferedImage java_image, int margin) {
+	private boolean copy(int index_top_left_x, int index_top_left_y, int index_bottom_right_x, int index_bottom_right_y, ColorMap cf, BufferedImage java_image, int margin) {
 		boolean is_empty = true;
 		int offset_x = index_top_left_x - margin;
 		int offset_y = index_top_left_y - margin;
