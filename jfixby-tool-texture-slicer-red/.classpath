@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="jfixby-tool-texture-slicer-red"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-tool-texture-slicer-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cv-api"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
