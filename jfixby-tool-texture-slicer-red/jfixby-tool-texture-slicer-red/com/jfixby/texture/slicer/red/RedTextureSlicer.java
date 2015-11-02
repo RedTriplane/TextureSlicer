@@ -9,8 +9,8 @@ import com.jfixby.cmns.api.collections.JUtils;
 import com.jfixby.cmns.api.color.Color;
 import com.jfixby.cmns.api.color.Colors;
 import com.jfixby.cmns.api.filesystem.File;
-import com.jfixby.cmns.api.image.ColorMap;
-import com.jfixby.cmns.api.image.ColorMapSpecs;
+import com.jfixby.cmns.api.image.EditableColorMap;
+import com.jfixby.cmns.api.image.ArrayColorMapSpecs;
 import com.jfixby.cmns.api.image.ImageProcessing;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.math.IntegerMath;
@@ -140,11 +140,11 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		int index_bottom_right_x = (1 + i) * tile_width - 1;
 		int index_bottom_right_y = (1 + j) * tile_height - 1;
 
-		ColorMapSpecs cf_specs = ImageProcessing.newColorMapSpecs();
+		ArrayColorMapSpecs cf_specs = ImageProcessing.newArrayColorMapSpecs();
 		cf_specs.setWidth(tile_actual_width);
 		cf_specs.setHeight(tile_actual_height);
 
-		ColorMap cf = ImageProcessing.newArrayColorMap(cf_specs);
+		EditableColorMap cf = ImageProcessing.newArrayColorMap(cf_specs);
 		boolean is_empty = copy(index_top_left_x, index_top_left_y, index_bottom_right_x, index_bottom_right_y, cf, java_image, margin);
 
 		BufferedImage java_tile = ImageGWT.toGWTImage(cf);
@@ -165,7 +165,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 
 	}
 
-	private boolean copy(int index_top_left_x, int index_top_left_y, int index_bottom_right_x, int index_bottom_right_y, ColorMap cf, BufferedImage java_image, int margin) {
+	private boolean copy(int index_top_left_x, int index_top_left_y, int index_bottom_right_x, int index_bottom_right_y, EditableColorMap cf, BufferedImage java_image, int margin) {
 		boolean is_empty = true;
 		int offset_x = index_top_left_x - margin;
 		int offset_y = index_top_left_y - margin;
