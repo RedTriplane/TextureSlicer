@@ -2,8 +2,6 @@ package com.jfixby.texture.slicer.api;
 
 import com.jfixby.cmns.api.assets.AssetID;
 import com.jfixby.cmns.api.filesystem.File;
-import com.jfixby.cmns.api.filesystem.FileSystem;
-import com.jfixby.cmns.api.path.AbsolutePath;
 
 public interface TextureSlicerSpecs {
 
