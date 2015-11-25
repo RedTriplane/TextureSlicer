@@ -2,7 +2,6 @@ package com.jfixby.texture.slicer.test;
 
 import com.jfixby.cmns.adopted.gdx.json.GdxJson;
 import com.jfixby.cmns.api.assets.Names;
-import com.jfixby.cmns.api.collections.JUtils;
 import com.jfixby.cmns.api.color.Colors;
 import com.jfixby.cmns.api.filesystem.LocalFileSystem;
 import com.jfixby.cmns.api.image.ImageProcessing;
@@ -14,6 +13,7 @@ import com.jfixby.cmns.api.math.IntegerMath;
 import com.jfixby.cmns.api.md5.MD5;
 import com.jfixby.cmns.api.net.http.Http;
 import com.jfixby.cmns.api.sys.Sys;
+import com.jfixby.cmns.api.util.JUtils;
 import com.jfixby.cmns.jutils.desktop.DesktopUtils;
 import com.jfixby.red.color.RedColors;
 import com.jfixby.red.desktop.filesystem.win.WinFileSystem;

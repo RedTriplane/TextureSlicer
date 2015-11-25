@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import com.jfixby.cmns.api.assets.AssetID;
 import com.jfixby.cmns.api.assets.Names;
-import com.jfixby.cmns.api.collections.JUtils;
 import com.jfixby.cmns.api.color.Color;
 import com.jfixby.cmns.api.color.Colors;
 import com.jfixby.cmns.api.filesystem.File;
@@ -14,6 +13,7 @@ import com.jfixby.cmns.api.image.EditableColorMap;
 import com.jfixby.cmns.api.image.ImageProcessing;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.math.IntegerMath;
+import com.jfixby.cmns.api.util.JUtils;
 import com.jfixby.cv.api.gwt.ImageGWT;
 import com.jfixby.texture.slicer.api.SlicesCompositionInfo;
 import com.jfixby.texture.slicer.api.TextureSlicerComponent;
