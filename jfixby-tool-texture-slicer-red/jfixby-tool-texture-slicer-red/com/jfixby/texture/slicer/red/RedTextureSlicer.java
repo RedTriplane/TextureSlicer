@@ -7,13 +7,13 @@ import com.jfixby.cmns.api.assets.AssetID;
 import com.jfixby.cmns.api.assets.Names;
 import com.jfixby.cmns.api.color.Color;
 import com.jfixby.cmns.api.color.Colors;
+import com.jfixby.cmns.api.debug.Debug;
 import com.jfixby.cmns.api.filesystem.File;
 import com.jfixby.cmns.api.image.ArrayColorMapSpecs;
 import com.jfixby.cmns.api.image.EditableColorMap;
 import com.jfixby.cmns.api.image.ImageProcessing;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.math.IntegerMath;
-import com.jfixby.cmns.api.util.JUtils;
 import com.jfixby.cv.api.gwt.ImageGWT;
 import com.jfixby.texture.slicer.api.SlicesCompositionInfo;
 import com.jfixby.texture.slicer.api.TextureSlicerComponent;
@@ -44,7 +44,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		int tile_height = (int) IntegerMath.max(specs.getTileHeight(), TextureSlicerSpecs.MIN_TILE_SIZE);
 
 		AssetID namespace = specs.getNameSpacePrefix();
-		JUtils.checkNull("NameSpacePrefix", namespace);
+		Debug.checkNull("NameSpacePrefix", namespace);
 
 		File output_folder = specs.getOutputFolder();
 		if (output_folder == null) {
