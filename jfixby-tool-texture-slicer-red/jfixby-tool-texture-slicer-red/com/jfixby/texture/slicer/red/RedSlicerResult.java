@@ -2,7 +2,7 @@ package com.jfixby.texture.slicer.red;
 
 import com.jfixby.cmns.api.assets.AssetID;
 import com.jfixby.cmns.api.collections.Collection;
-import com.jfixby.cmns.api.collections.JUtils;
+import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.collections.List;
 import com.jfixby.texture.slicer.api.SlicesCompositionInfo;
 import com.jfixby.texture.slicer.api.TextureSlicingResult;
@@ -10,7 +10,7 @@ import com.jfixby.texture.slicer.api.TextureSlicingResult;
 public class RedSlicerResult implements TextureSlicingResult {
 
 	private AssetID namespace;
-	private List<AssetID> list = JUtils.newList();
+	private List<AssetID> list = Collections.newList();
 	private SlicesCompositionInfo structure;
 
 	public void setAssetID(AssetID namespace) {

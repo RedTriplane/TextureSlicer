@@ -2,7 +2,7 @@ package com.jfixby.texture.slicer.test;
 
 import com.jfixby.cmns.adopted.gdx.json.GdxJson;
 import com.jfixby.cmns.api.assets.Names;
-import com.jfixby.cmns.api.collections.JUtils;
+import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.color.Colors;
 import com.jfixby.cmns.api.file.LocalFileSystem;
 import com.jfixby.cmns.api.image.ImageProcessing;
@@ -14,7 +14,7 @@ import com.jfixby.cmns.api.math.IntegerMath;
 import com.jfixby.cmns.api.md5.MD5;
 import com.jfixby.cmns.api.net.http.Http;
 import com.jfixby.cmns.api.sys.Sys;
-import com.jfixby.cmns.jutils.desktop.DesktopUtils;
+import com.jfixby.cmns.collections.DesktopCollections;
 import com.jfixby.red.color.RedColors;
 import com.jfixby.red.desktop.filesystem.win.WinFileSystem;
 import com.jfixby.red.desktop.img.processing.DesktopImageProcessing;
@@ -31,7 +31,7 @@ public class Setup {
 
 	public static void setup() {
 		L.installComponent(new DesktopLogger());
-		JUtils.installComponent(new DesktopUtils());
+		Collections.installComponent(new DesktopCollections());
 		IO.installComponent(new RedIO());
 		IntegerMath.installComponent(new RedIntegerMath());
 		MD5.installComponent(new AlpaeroMD5());
