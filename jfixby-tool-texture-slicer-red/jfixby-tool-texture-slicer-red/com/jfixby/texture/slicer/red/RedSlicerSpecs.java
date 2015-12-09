@@ -1,7 +1,7 @@
 package com.jfixby.texture.slicer.red;
 
 import com.jfixby.cmns.api.assets.AssetID;
-import com.jfixby.cmns.api.filesystem.File;
+import com.jfixby.cmns.api.file.File;
 import com.jfixby.texture.slicer.api.TextureSlicerSpecs;
 
 public class RedSlicerSpecs implements TextureSlicerSpecs {
