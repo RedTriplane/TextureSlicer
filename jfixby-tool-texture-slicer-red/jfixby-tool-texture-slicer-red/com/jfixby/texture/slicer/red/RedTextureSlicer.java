@@ -8,13 +8,13 @@ import com.jfixby.cmns.api.assets.Names;
 import com.jfixby.cmns.api.color.Color;
 import com.jfixby.cmns.api.color.Colors;
 import com.jfixby.cmns.api.debug.Debug;
+import com.jfixby.cmns.api.desktop.ImageAWT;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.image.ArrayColorMapSpecs;
 import com.jfixby.cmns.api.image.EditableColorMap;
 import com.jfixby.cmns.api.image.ImageProcessing;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.math.IntegerMath;
-import com.jfixby.cv.api.gwt.ImageGWT;
 import com.jfixby.texture.slicer.api.SlicesCompositionInfo;
 import com.jfixby.texture.slicer.api.TextureSlicerComponent;
 import com.jfixby.texture.slicer.api.TextureSlicerSpecs;
@@ -61,7 +61,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		structure.composition_asset_id_string = (namespace_string);
 
 		L.d("reading", input_file);
-		BufferedImage java_image = ImageGWT.readFromFile(input_file);
+		BufferedImage java_image = ImageAWT.readFromFile(input_file);
 
 		int image_height = java_image.getHeight();
 		int image_width = java_image.getWidth();
@@ -156,7 +156,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		boolean is_empty = copy(index_top_left_x, index_top_left_y, index_bottom_right_x, index_bottom_right_y, cf,
 				java_image, margin);
 
-		BufferedImage java_tile = ImageGWT.toGWTImage(cf);
+		BufferedImage java_tile = ImageAWT.toAWTImage(cf);
 		String postfix = "tile-" + i + "-" + j;
 		String tile_name = namespace + "." + postfix;
 		result.addTile(Names.newAssetID(tile_name));
@@ -166,7 +166,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 			File tile_path = output_folder.child(tile_name + ".png");
 			L.d("writing", tile_path);
 
-			ImageGWT.writeToFile(java_tile, tile_path, "PNG");
+			ImageAWT.writeToFile(java_tile, tile_path, "PNG");
 		} else {
 			L.d("dropping empty_raster", postfix);
 		}
