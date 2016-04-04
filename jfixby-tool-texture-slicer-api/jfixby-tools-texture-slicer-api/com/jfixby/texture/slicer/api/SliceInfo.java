@@ -1,6 +1,8 @@
 package com.jfixby.texture.slicer.api;
 
-public class SliceInfo {
+import java.io.Serializable;
+
+public class SliceInfo implements Serializable{
 
 	public double tile_width;
 	public double tile_height;

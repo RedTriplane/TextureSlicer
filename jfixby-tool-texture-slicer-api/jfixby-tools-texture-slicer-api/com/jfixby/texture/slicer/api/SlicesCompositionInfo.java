@@ -1,8 +1,9 @@
 package com.jfixby.texture.slicer.api;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-public class SlicesCompositionInfo {
+public class SlicesCompositionInfo implements Serializable{
 
 	public String composition_asset_id_string;
 

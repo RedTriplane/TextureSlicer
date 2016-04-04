@@ -53,7 +53,7 @@ public class TestTextureSlicer {
 			SlicesCompositionInfo composition = result.getTilesComposition();
 			SlicesCompositionsContainer container = new SlicesCompositionsContainer();
 			container.content.addElement(composition);
-			String data = Json.serializeToString(container);
+			String data = Json.serializeToString(container).toString();
 
 			AssetID sctruct_package_name = package_name.child(TextureSlicerSpecs.TILE_MAP_FILE_EXTENSION);
 			String struct_pkg_name = sctruct_package_name.toString();
