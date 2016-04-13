@@ -1,5 +1,7 @@
+
 package com.jfixby.texture.slicer.red;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -23,27 +25,28 @@ import com.jfixby.texture.slicer.api.TextureSlicingResult;
 public class RedTextureSlicer implements TextureSlicerComponent {
 
 	@Override
-	public TextureSlicerSpecs newDecompositionSpecs() {
+	public TextureSlicerSpecs newDecompositionSpecs () {
 		return new RedSlicerSpecs();
 	}
 
 	@Override
-	public TextureSlicingResult decompose(TextureSlicerSpecs specs) throws IOException {
+	public TextureSlicingResult decompose (final TextureSlicerSpecs specs) throws IOException {
 
-		RedSlicerResult result = new RedSlicerResult();
+		final RedSlicerResult result = new RedSlicerResult();
 
 		L.d(specs);
+		final float qualityReductionValue = specs.getImageQuaity();
 
-		File input_file = specs.getInputFile();
+		final File input_file = specs.getInputFile();
 		if (!input_file.isFile()) {
 			throw new Error("Bad file: " + input_file);
 		}
 
-		int margin = (int) IntegerMath.max(specs.getMargin(), 0);
-		int tile_width = (int) IntegerMath.max(specs.getTileWidth(), TextureSlicerSpecs.MIN_TILE_SIZE);
-		int tile_height = (int) IntegerMath.max(specs.getTileHeight(), TextureSlicerSpecs.MIN_TILE_SIZE);
+		final int margin = (int)IntegerMath.max(specs.getMargin(), 0);
+		final int tile_width = (int)IntegerMath.max(specs.getTileWidth(), TextureSlicerSpecs.MIN_TILE_SIZE);
+		final int tile_height = (int)IntegerMath.max(specs.getTileHeight(), TextureSlicerSpecs.MIN_TILE_SIZE);
 
-		AssetID namespace = specs.getNameSpacePrefix();
+		final AssetID namespace = specs.getNameSpacePrefix();
 		Debug.checkNull("NameSpacePrefix", namespace);
 
 		File output_folder = specs.getOutputFolder();
@@ -52,19 +55,19 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		}
 		output_folder.makeFolder();
 
-		SlicesCompositionInfo structure = new SlicesCompositionInfo();
+		final SlicesCompositionInfo structure = new SlicesCompositionInfo();
 
 		structure.cell_margin = (margin);
 		structure.cell_width = (tile_width);
 		structure.cell_height = (tile_height);
-		String namespace_string = namespace.toString();
+		final String namespace_string = namespace.toString();
 		structure.composition_asset_id_string = (namespace_string);
 
 		L.d("reading", input_file);
-		BufferedImage java_image = ImageAWT.readFromFile(input_file);
+		final BufferedImage java_image = ImageAWT.readFromFile(input_file);
 
-		int image_height = java_image.getHeight();
-		int image_width = java_image.getWidth();
+		final int image_height = java_image.getHeight();
+		final int image_width = java_image.getWidth();
 
 		structure.width = image_width;
 		structure.height = image_height;
@@ -74,17 +77,17 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 			throw new Error("Empty image");
 		}
 
-		int full_rows = image_height / tile_height;
-		int full_columns = image_width / tile_width;
+		final int full_rows = image_height / tile_height;
+		final int full_columns = image_width / tile_width;
 
 		// L.d("full_rows", full_rows);
 		// L.d("full_columns", full_columns);
 
-		int rest_height = image_height % tile_height;
-		int rest_width = image_width % tile_width;
+		final int rest_height = image_height % tile_height;
+		final int rest_width = image_width % tile_width;
 
-		int rest_rows = IntegerMath.index(rest_height > 0);
-		int rest_columns = IntegerMath.index(rest_width > 0);
+		final int rest_rows = IntegerMath.index(rest_height > 0);
+		final int rest_columns = IntegerMath.index(rest_width > 0);
 
 		// L.d("rest_rows", rest_rows);
 		// L.d("rest_columns", rest_columns);
@@ -92,44 +95,44 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		// L.d("rest_height", rest_height);
 		// L.d("rest_width", rest_width);
 
-		int k = 0;
+		final int k = 0;
 		for (int j = 0; j < full_rows; j++) {
 			for (int i = 0; i < full_columns; i++) {
-				int tile_actual_width = tile_width + margin * 2;
-				int tile_actual_height = tile_height + margin * 2;
-				process(i, j, tile_width, tile_height, margin, java_image, namespace_string, output_folder, k,
-						structure, tile_actual_width, tile_actual_height, result);
+				final int tile_actual_width = tile_width + margin * 2;
+				final int tile_actual_height = tile_height + margin * 2;
+				this.process(i, j, tile_width, tile_height, margin, java_image, namespace_string, output_folder, k, structure,
+					tile_actual_width, tile_actual_height, result, qualityReductionValue);
 
 			}
 		}
 
 		if (rest_rows > 0) {
-			int j = full_rows;
+			final int j = full_rows;
 			for (int i = 0; i < full_columns; i++) {
-				int tile_actual_width = tile_width + margin * 2;
-				int tile_actual_height = rest_height + margin * 2;
-				process(i, j, tile_width, tile_height, margin, java_image, namespace_string, output_folder, k,
-						structure, tile_actual_width, tile_actual_height, result);
+				final int tile_actual_width = tile_width + margin * 2;
+				final int tile_actual_height = rest_height + margin * 2;
+				this.process(i, j, tile_width, tile_height, margin, java_image, namespace_string, output_folder, k, structure,
+					tile_actual_width, tile_actual_height, result, qualityReductionValue);
 
 			}
 		}
 
 		if (rest_columns > 0) {
 			for (int j = 0; j < full_rows; j++) {
-				int i = full_columns;
-				int tile_actual_width = rest_width + margin * 2;
-				int tile_actual_height = tile_height + margin * 2;
-				process(i, j, tile_width, tile_height, margin, java_image, namespace_string, output_folder, k,
-						structure, tile_actual_width, tile_actual_height, result);
+				final int i = full_columns;
+				final int tile_actual_width = rest_width + margin * 2;
+				final int tile_actual_height = tile_height + margin * 2;
+				this.process(i, j, tile_width, tile_height, margin, java_image, namespace_string, output_folder, k, structure,
+					tile_actual_width, tile_actual_height, result, qualityReductionValue);
 			}
 		}
 		if (rest_columns > 0 && rest_rows > 0) {
-			int j = full_rows;
-			int i = full_columns;
-			int tile_actual_width = rest_width + margin * 2;
-			int tile_actual_height = rest_height + margin * 2;
-			process(i, j, tile_width, tile_height, margin, java_image, namespace_string, output_folder, k, structure,
-					tile_actual_width, tile_actual_height, result);
+			final int j = full_rows;
+			final int i = full_columns;
+			final int tile_actual_width = rest_width + margin * 2;
+			final int tile_actual_height = rest_height + margin * 2;
+			this.process(i, j, tile_width, tile_height, margin, java_image, namespace_string, output_folder, k, structure,
+				tile_actual_width, tile_actual_height, result, qualityReductionValue);
 		}
 
 		result.setAssetID(namespace);
@@ -138,35 +141,36 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		return result;
 	}
 
-	private void process(int i, int j, int tile_width, int tile_height, int margin, BufferedImage java_image,
-			String namespace, File output_folder, int k, SlicesCompositionInfo structure, int tile_actual_width,
-			int tile_actual_height, RedSlicerResult result) throws IOException {
-		int index_top_left_x = i * tile_width;
-		int index_top_left_y = j * tile_height;
+	private void process (final int i, final int j, final int tile_width, final int tile_height, final int margin,
+		final BufferedImage java_image, final String namespace, final File output_folder, int k,
+		final SlicesCompositionInfo structure, final int tile_actual_width, final int tile_actual_height,
+		final RedSlicerResult result, final float qualityReductionValue) throws IOException {
+		final int index_top_left_x = i * tile_width;
+		final int index_top_left_y = j * tile_height;
 		// L.d("dot", "(" + index_top_left_x + ";" + index_top_left_y
 		// + ")");
-		int index_bottom_right_x = (1 + i) * tile_width - 1;
-		int index_bottom_right_y = (1 + j) * tile_height - 1;
+		final int index_bottom_right_x = (1 + i) * tile_width - 1;
+		final int index_bottom_right_y = (1 + j) * tile_height - 1;
 
-		ArrayColorMapSpecs cf_specs = ImageProcessing.newArrayColorMapSpecs();
+		final ArrayColorMapSpecs cf_specs = ImageProcessing.newArrayColorMapSpecs();
 		cf_specs.setWidth(tile_actual_width);
 		cf_specs.setHeight(tile_actual_height);
 
-		EditableColorMap cf = ImageProcessing.newArrayColorMap(cf_specs);
-		boolean is_empty = copy(index_top_left_x, index_top_left_y, index_bottom_right_x, index_bottom_right_y, cf,
-				java_image, margin);
+		final EditableColorMap cf = ImageProcessing.newArrayColorMap(cf_specs);
+		final boolean is_empty = this.copy(index_top_left_x, index_top_left_y, index_bottom_right_x, index_bottom_right_y, cf,
+			java_image, margin);
 
-		BufferedImage java_tile = ImageAWT.toAWTImage(cf);
-		String postfix = "tile-" + i + "-" + j;
-		String tile_name = namespace + "." + postfix;
+		final BufferedImage java_tile = ImageAWT.toAWTImage(cf);
+		final String postfix = "tile-" + i + "-" + j;
+		final String tile_name = namespace + "." + postfix;
 		result.addTile(Names.newAssetID(tile_name));
 
 		k++;
 		if (!is_empty) {
-			File tile_path = output_folder.child(tile_name + ".png");
+			final File tile_path = output_folder.child(tile_name + ".png");
 			L.d("writing", tile_path);
 
-			ImageAWT.writeToFile(java_tile, tile_path, "PNG");
+			this.writeToFile(java_tile, tile_path, qualityReductionValue);
 		} else {
 			L.d("dropping empty_raster", postfix);
 		}
@@ -174,17 +178,31 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 
 	}
 
-	private boolean copy(int index_top_left_x, int index_top_left_y, int index_bottom_right_x, int index_bottom_right_y,
-			EditableColorMap cf, BufferedImage java_image, int margin) {
+	private void writeToFile (final BufferedImage java_image, final File tile_path, final float qualityReductionValue)
+		throws IOException {
+
+		BufferedImage out;
+		if (qualityReductionValue != 1) {
+			final Image tmp = ImageAWT.awtScale(java_image, qualityReductionValue);
+			out = ImageAWT.toBufferedImage(tmp);
+		} else {
+			out = java_image;
+		}
+
+		ImageAWT.writeToFile(out, tile_path, "PNG");
+	}
+
+	private boolean copy (final int index_top_left_x, final int index_top_left_y, final int index_bottom_right_x,
+		final int index_bottom_right_y, final EditableColorMap cf, final BufferedImage java_image, final int margin) {
 		boolean is_empty = true;
-		int offset_x = index_top_left_x - margin;
-		int offset_y = index_top_left_y - margin;
+		final int offset_x = index_top_left_x - margin;
+		final int offset_y = index_top_left_y - margin;
 		for (int image_y = offset_y; image_y <= index_bottom_right_y + margin; image_y++) {
 			for (int image_x = offset_x; image_x <= index_bottom_right_x + margin; image_x++) {
 				// L.d(">> " + x + "," + y);
 				Color color_value;
-				if (within(image_x, image_y, java_image)) {
-					int rgb = java_image.getRGB(image_x, image_y);
+				if (this.within(image_x, image_y, java_image)) {
+					final int rgb = java_image.getRGB(image_x, image_y);
 					color_value = Colors.newColor().setARGB(rgb);
 					if (color_value.alpha() > 0) {
 						is_empty = false;
@@ -193,15 +211,15 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 					color_value = Colors.newColor(0f, 1f, 0f, 0f);
 				}
 
-				int a = image_x - offset_x;
-				int b = image_y - offset_y;
+				final int a = image_x - offset_x;
+				final int b = image_y - offset_y;
 				cf.setValue(a, b, color_value);
 			}
 		}
 		return is_empty;
 	}
 
-	private boolean within(int image_x, int image_y, BufferedImage java_image) {
+	private boolean within (final int image_x, final int image_y, final BufferedImage java_image) {
 		if (image_x < 0) {
 			return false;
 		}

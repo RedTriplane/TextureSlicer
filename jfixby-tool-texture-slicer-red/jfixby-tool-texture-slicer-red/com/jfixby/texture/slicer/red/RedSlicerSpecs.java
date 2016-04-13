@@ -1,3 +1,4 @@
+
 package com.jfixby.texture.slicer.red;
 
 import com.jfixby.cmns.api.assets.AssetID;
@@ -7,13 +8,11 @@ import com.jfixby.texture.slicer.api.TextureSlicerSpecs;
 public class RedSlicerSpecs implements TextureSlicerSpecs {
 
 	@Override
-	public String toString() {
-		return "[inputFile=" + inputFile + ", tileWidth=" + tileWidth
-				+ ", tileHeight=" + tileHeight + ", nameSpacePrefix="
-				+ nameSpacePrefix + ", outputFolder=" + outputFolder
-				+ ", compositionStructureOutputFileName="
-				+ compositionStructureOutputFileName + ", margin=" + margin
-				+ "]";
+	public String toString () {
+		return "RedSlicerSpecs [inputFile=" + this.inputFile + ", tileWidth=" + this.tileWidth + ", tileHeight=" + this.tileHeight
+			+ ", nameSpacePrefix=" + this.nameSpacePrefix + ", outputFolder=" + this.outputFolder
+			+ ", compositionStructureOutputFileName=" + this.compositionStructureOutputFileName + ", margin=" + this.margin
+			+ ", qualityReductionValue=" + this.qualityReductionValue + "]";
 	}
 
 	File inputFile;
@@ -23,62 +22,84 @@ public class RedSlicerSpecs implements TextureSlicerSpecs {
 	File outputFolder;
 	String compositionStructureOutputFileName;
 	int margin = 1;
+	private float qualityReductionValue = 1;
 
-	public File getInputFile() {
-		return inputFile;
+	@Override
+	public File getInputFile () {
+		return this.inputFile;
 	}
 
-	public void setInputFile(File inputFile) {
+	@Override
+	public void setInputFile (final File inputFile) {
 		this.inputFile = inputFile;
 	}
 
-	public int getTileWidth() {
-		return tileWidth;
+	@Override
+	public int getTileWidth () {
+		return this.tileWidth;
 	}
 
-	public void setTileWidth(int tileWidth) {
+	@Override
+	public void setTileWidth (final int tileWidth) {
 		this.tileWidth = tileWidth;
 	}
 
-	public int getTileHeight() {
-		return tileHeight;
+	@Override
+	public int getTileHeight () {
+		return this.tileHeight;
 	}
 
-	public void setTileHeight(int tileHeight) {
+	@Override
+	public void setTileHeight (final int tileHeight) {
 		this.tileHeight = tileHeight;
 	}
 
-	public AssetID getNameSpacePrefix() {
-		return nameSpacePrefix;
+	@Override
+	public AssetID getNameSpacePrefix () {
+		return this.nameSpacePrefix;
 	}
 
-	public void setNameSpacePrefix(AssetID nameSpacePrefix) {
+	@Override
+	public void setNameSpacePrefix (final AssetID nameSpacePrefix) {
 		this.nameSpacePrefix = nameSpacePrefix;
 	}
 
-	public File getOutputFolder() {
-		return outputFolder;
+	@Override
+	public File getOutputFolder () {
+		return this.outputFolder;
 	}
 
-	public void setOutputFolder(File outputFolder) {
+	@Override
+	public void setOutputFolder (final File outputFolder) {
 		this.outputFolder = outputFolder;
 	}
 
-	public String getCompositionStructureOutputFileName() {
-		return compositionStructureOutputFileName;
+	public String getCompositionStructureOutputFileName () {
+		return this.compositionStructureOutputFileName;
 	}
 
-	public void setCompositionStructureOutputFileName(
-			String compositionStructureOutputFileName) {
+	public void setCompositionStructureOutputFileName (final String compositionStructureOutputFileName) {
 		this.compositionStructureOutputFileName = compositionStructureOutputFileName;
 	}
 
-	public int getMargin() {
-		return margin;
+	@Override
+	public int getMargin () {
+		return this.margin;
 	}
 
-	public void setMargin(int margin) {
+	@Override
+	public void setMargin (final int margin) {
 		this.margin = margin;
+	}
+
+	@Override
+	public float getImageQuaity () {
+		return this.qualityReductionValue;
+	}
+
+	@Override
+	public void setImageQuality (final float qualityReductionValue) {
+		this.qualityReductionValue = qualityReductionValue;
 	}
 
 }
