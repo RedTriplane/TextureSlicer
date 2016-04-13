@@ -1,7 +1,6 @@
 
 package com.jfixby.texture.slicer.red;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -13,6 +12,7 @@ import com.jfixby.cmns.api.debug.Debug;
 import com.jfixby.cmns.api.desktop.ImageAWT;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.image.ArrayColorMapSpecs;
+import com.jfixby.cmns.api.image.ColorMap;
 import com.jfixby.cmns.api.image.EditableColorMap;
 import com.jfixby.cmns.api.image.ImageProcessing;
 import com.jfixby.cmns.api.log.L;
@@ -160,7 +160,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		final boolean is_empty = this.copy(index_top_left_x, index_top_left_y, index_bottom_right_x, index_bottom_right_y, cf,
 			java_image, margin);
 
-		final BufferedImage java_tile = ImageAWT.toAWTImage(cf);
+// final BufferedImage java_tile = ImageAWT.toAWTImage(cf);
 		final String postfix = "tile-" + i + "-" + j;
 		final String tile_name = namespace + "." + postfix;
 		result.addTile(Names.newAssetID(tile_name));
@@ -170,7 +170,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 			final File tile_path = output_folder.child(tile_name + ".png");
 			L.d("writing", tile_path);
 
-			this.writeToFile(java_tile, tile_path, qualityReductionValue);
+			this.writeToFile(cf, tile_path, qualityReductionValue);
 		} else {
 			L.d("dropping empty_raster", postfix);
 		}
@@ -178,18 +178,24 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 
 	}
 
-	private void writeToFile (final BufferedImage java_image, final File tile_path, final float qualityReductionValue)
-		throws IOException {
+	private void writeToFile (ColorMap image, final File outputFile, final float imageQuality) throws IOException {
 
-		BufferedImage out;
-		if (qualityReductionValue != 1) {
-			final Image tmp = ImageAWT.awtScale(java_image, qualityReductionValue);
-			out = ImageAWT.toBufferedImage(tmp);
-		} else {
-			out = java_image;
+// ColorMap image = ImageAWT.readAWTColorMap(file_to_copy);
+		if (imageQuality != 1) {
+			image = ImageProcessing.scale(image, imageQuality);
 		}
+// final File outputFile = tiling_folder.child(file_to_copy.getName());
+		ImageAWT.writeToFile(image, outputFile, "PNG");
 
-		ImageAWT.writeToFile(out, tile_path, "PNG");
+// BufferedImage out;
+// if (qualityReductionValue != 1) {
+// final Image tmp = ImageAWT.awtScale(java_image, qualityReductionValue);
+// out = ImageAWT.toBufferedImage(tmp);
+// } else {
+// out = java_image;
+// }
+//
+// ImageAWT.writeToFile(out, tile_path, "PNG");
 	}
 
 	private boolean copy (final int index_top_left_x, final int index_top_left_y, final int index_bottom_right_x,
