@@ -10,7 +10,7 @@ import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.file.LocalFileSystem;
 import com.jfixby.cmns.api.json.Json;
 import com.jfixby.cmns.api.log.L;
-import com.jfixby.red.desktop.DesktopAssembler;
+import com.jfixby.red.desktop.DesktopSetup;
 import com.jfixby.texture.slicer.api.SlicesCompositionInfo;
 import com.jfixby.texture.slicer.api.SlicesCompositionsContainer;
 import com.jfixby.texture.slicer.api.TextureSlicer;
@@ -21,7 +21,7 @@ import com.jfixby.texture.slicer.red.RedTextureSlicer;
 public class TestTextureSlicer {
 
 	public static void main(String[] args) throws IOException {
-		DesktopAssembler.setup();
+		DesktopSetup.deploy();
 
 		TextureSlicer.installComponent(new RedTextureSlicer());
 
