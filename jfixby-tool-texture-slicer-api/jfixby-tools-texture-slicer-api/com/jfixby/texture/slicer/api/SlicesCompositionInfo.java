@@ -1,9 +1,15 @@
+
 package com.jfixby.texture.slicer.api;
 
 import java.io.Serializable;
 import java.util.Vector;
 
-public class SlicesCompositionInfo implements Serializable{
+public class SlicesCompositionInfo implements Serializable {
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -4138188908227530645L;
 
 	public String composition_asset_id_string;
 
@@ -16,18 +22,19 @@ public class SlicesCompositionInfo implements Serializable{
 
 	public Vector<SliceInfo> tiles = new Vector<SliceInfo>();
 
-	public void addTile(int i, int j, String postfix, boolean is_empty, double width, double height) {
-		SliceInfo t = new SliceInfo();
+	public void addTile (final int i, final int j, final String postfix, final boolean is_empty, final double width,
+		final double height) {
+		final SliceInfo t = new SliceInfo();
 		t.index_x = i;
 		t.index_y = j;
 		t.tile_width = width;
 		t.tile_height = height;
 		t.postfix = postfix;
 		t.is_empty = is_empty;
-		tiles.add(t);
+		this.tiles.add(t);
 	}
 
-	public String getAssetID() {
-		return composition_asset_id_string;
+	public String getAssetID () {
+		return this.composition_asset_id_string;
 	}
 }

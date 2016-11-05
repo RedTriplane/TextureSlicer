@@ -17,6 +17,7 @@ import com.jfixby.cmns.api.image.EditableColorMap;
 import com.jfixby.cmns.api.image.ImageProcessing;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.math.IntegerMath;
+import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.texture.slicer.api.SlicesCompositionInfo;
 import com.jfixby.texture.slicer.api.TextureSlicerComponent;
 import com.jfixby.texture.slicer.api.TextureSlicerSpecs;
@@ -160,8 +161,9 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		final boolean is_empty = this.copy(index_top_left_x, index_top_left_y, index_bottom_right_x, index_bottom_right_y, cf,
 			java_image, margin);
 
+		final String signature = this.signTile();
 // final BufferedImage java_tile = ImageAWT.toAWTImage(cf);
-		final String postfix = "tile-" + i + "-" + j;
+		final String postfix = "tile-" + signature + "-" + i + "-" + j;
 		final String tile_name = namespace + "." + postfix;
 		result.addTile(Names.newAssetID(tile_name));
 
@@ -176,6 +178,14 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		}
 		structure.addTile(i, j, postfix, is_empty, tile_actual_width, tile_actual_height);
 
+	}
+
+	private String signTile () {
+		final long time = Sys.SystemTime().currentTimeMillis();
+		final long cut = (time / 1000) * 1000;
+		final long last_digits = -cut + time;
+
+		return last_digits + "";
 	}
 
 	private void writeToFile (ColorMap image, final File outputFile, final float imageQuality) throws IOException {
