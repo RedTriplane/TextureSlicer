@@ -1,3 +1,4 @@
+
 package com.jfixby.texture.slicer.api;
 
 import java.io.Serializable;
