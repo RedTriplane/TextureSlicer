@@ -1,7 +1,7 @@
 
 package com.jfixby.texture.slicer.api;
 
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.file.File;
 
 public interface TextureSlicerSpecs {
@@ -16,7 +16,7 @@ public interface TextureSlicerSpecs {
 
 	void setTileHeight (int tile_height);
 
-	void setNameSpacePrefix (AssetID newAssetID);
+	void setNameSpacePrefix (ID newAssetID);
 
 	void setOutputFolder (File parent);
 
@@ -28,7 +28,7 @@ public interface TextureSlicerSpecs {
 
 	public int getTileHeight ();
 
-	public AssetID getNameSpacePrefix ();
+	public ID getNameSpacePrefix ();
 
 	public File getOutputFolder ();
 

@@ -1,7 +1,7 @@
 
 package com.jfixby.texture.slicer.red;
 
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.texture.slicer.api.TextureSlicerSpecs;
 
@@ -18,7 +18,7 @@ public class RedSlicerSpecs implements TextureSlicerSpecs {
 	File inputFile;
 	int tileWidth = 128;
 	int tileHeight = 128;
-	AssetID nameSpacePrefix;
+	ID nameSpacePrefix;
 	File outputFolder;
 	String compositionStructureOutputFileName;
 	int margin = 1;
@@ -55,12 +55,12 @@ public class RedSlicerSpecs implements TextureSlicerSpecs {
 	}
 
 	@Override
-	public AssetID getNameSpacePrefix () {
+	public ID getNameSpacePrefix () {
 		return this.nameSpacePrefix;
 	}
 
 	@Override
-	public void setNameSpacePrefix (final AssetID nameSpacePrefix) {
+	public void setNameSpacePrefix (final ID nameSpacePrefix) {
 		this.nameSpacePrefix = nameSpacePrefix;
 	}
 

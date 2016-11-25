@@ -1,6 +1,6 @@
 package com.jfixby.texture.slicer.red;
 
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.collections.List;
@@ -9,25 +9,25 @@ import com.jfixby.texture.slicer.api.TextureSlicingResult;
 
 public class RedSlicerResult implements TextureSlicingResult {
 
-	private AssetID namespace;
-	private List<AssetID> list = Collections.newList();
+	private ID namespace;
+	private List<ID> list = Collections.newList();
 	private SlicesCompositionInfo structure;
 
-	public void setAssetID(AssetID namespace) {
+	public void setAssetID(ID namespace) {
 		this.namespace = namespace;
 	}
 
 	@Override
-	public AssetID getRasterID() {
+	public ID getRasterID() {
 		return namespace;
 	}
 
 	@Override
-	public Collection<AssetID> listProducedTiles() {
+	public Collection<ID> listProducedTiles() {
 		return list;
 	}
 
-	public void addTile(AssetID newAssetID) {
+	public void addTile(ID newAssetID) {
 		list.add(newAssetID);
 	}
 

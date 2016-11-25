@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.assets.Names;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.file.LocalFileSystem;
@@ -41,7 +41,7 @@ public class TestTextureSlicer {
 		specs.setTileHeight(tile_size - 2 * margin);
 		specs.setMargin(margin);
 
-		AssetID package_name = Names.newAssetID("com.jfixby.tool.texture.slicer.example");
+		ID package_name = Names.newAssetID("com.jfixby.tool.texture.slicer.example");
 
 		specs.setNameSpacePrefix(package_name);
 
@@ -55,7 +55,7 @@ public class TestTextureSlicer {
 			container.content.addElement(composition);
 			String data = Json.serializeToString(container).toString();
 
-			AssetID sctruct_package_name = package_name.child(TextureSlicerSpecs.TILE_MAP_FILE_EXTENSION);
+			ID sctruct_package_name = package_name.child(TextureSlicerSpecs.TILE_MAP_FILE_EXTENSION);
 			String struct_pkg_name = sctruct_package_name.toString();
 			File container_file = output_folder.child(struct_pkg_name);
 			container_file.writeString(data);

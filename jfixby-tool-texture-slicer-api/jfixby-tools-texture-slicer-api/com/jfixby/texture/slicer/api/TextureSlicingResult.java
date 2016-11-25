@@ -1,13 +1,13 @@
 package com.jfixby.texture.slicer.api;
 
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.collections.Collection;
 
 public interface TextureSlicingResult {
 
-	AssetID getRasterID();
+	ID getRasterID();
 
-	Collection<AssetID> listProducedTiles();
+	Collection<ID> listProducedTiles();
 
 	SlicesCompositionInfo getTilesComposition();
 

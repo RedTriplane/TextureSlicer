@@ -4,7 +4,7 @@ package com.jfixby.texture.slicer.red;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.assets.Names;
 import com.jfixby.cmns.api.color.Color;
 import com.jfixby.cmns.api.color.Colors;
@@ -47,7 +47,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 		final int tile_width = (int)IntegerMath.max(specs.getTileWidth(), TextureSlicerSpecs.MIN_TILE_SIZE);
 		final int tile_height = (int)IntegerMath.max(specs.getTileHeight(), TextureSlicerSpecs.MIN_TILE_SIZE);
 
-		final AssetID namespace = specs.getNameSpacePrefix();
+		final ID namespace = specs.getNameSpacePrefix();
 		Debug.checkNull("NameSpacePrefix", namespace);
 
 		File output_folder = specs.getOutputFolder();
