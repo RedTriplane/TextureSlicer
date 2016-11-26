@@ -41,7 +41,7 @@ public class TestTextureSlicer {
 		specs.setTileHeight(tile_size - 2 * margin);
 		specs.setMargin(margin);
 
-		ID package_name = Names.newAssetID("com.jfixby.tool.texture.slicer.example");
+		ID package_name = Names.newID("com.jfixby.tool.texture.slicer.example");
 
 		specs.setNameSpacePrefix(package_name);
 

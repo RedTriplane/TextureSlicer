@@ -165,7 +165,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 // final BufferedImage java_tile = ImageAWT.toAWTImage(cf);
 		final String postfix = "tile-" + signature + "-" + i + "-" + j;
 		final String tile_name = namespace + "." + postfix;
-		result.addTile(Names.newAssetID(tile_name));
+		result.addTile(Names.newID(tile_name));
 
 		k++;
 		if (!is_empty) {
