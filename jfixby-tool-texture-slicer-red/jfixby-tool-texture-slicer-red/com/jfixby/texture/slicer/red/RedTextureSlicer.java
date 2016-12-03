@@ -10,6 +10,7 @@ import com.jfixby.cmns.api.color.Color;
 import com.jfixby.cmns.api.color.Colors;
 import com.jfixby.cmns.api.debug.Debug;
 import com.jfixby.cmns.api.desktop.ImageAWT;
+import com.jfixby.cmns.api.err.Err;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.image.ArrayColorMapSpecs;
 import com.jfixby.cmns.api.image.ColorMap;
@@ -40,7 +41,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 
 		final File input_file = specs.getInputFile();
 		if (!input_file.isFile()) {
-			throw new Error("Bad file: " + input_file);
+			Err.reportError("Bad file: " + input_file);
 		}
 
 		final int margin = (int)IntegerMath.max(specs.getMargin(), 0);
@@ -75,7 +76,7 @@ public class RedTextureSlicer implements TextureSlicerComponent {
 
 		L.d("  input", "[" + image_width + " x " + image_height + "]");
 		if (image_width == 0 && image_height == 0) {
-			throw new Error("Empty image");
+			Err.reportError("Empty image");
 		}
 
 		final int full_rows = image_height / tile_height;
