@@ -1,8 +1,8 @@
 
 package com.jfixby.texture.slicer.api;
 
-import com.jfixby.cmns.api.assets.ID;
-import com.jfixby.cmns.api.file.File;
+import com.jfixby.scarabei.api.assets.ID;
+import com.jfixby.scarabei.api.file.File;
 
 public interface TextureSlicerSpecs {
 

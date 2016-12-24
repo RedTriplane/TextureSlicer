@@ -1,9 +1,9 @@
 package com.jfixby.texture.slicer.red;
 
-import com.jfixby.cmns.api.assets.ID;
-import com.jfixby.cmns.api.collections.Collection;
-import com.jfixby.cmns.api.collections.Collections;
-import com.jfixby.cmns.api.collections.List;
+import com.jfixby.scarabei.api.assets.ID;
+import com.jfixby.scarabei.api.collections.Collection;
+import com.jfixby.scarabei.api.collections.Collections;
+import com.jfixby.scarabei.api.collections.List;
 import com.jfixby.texture.slicer.api.SlicesCompositionInfo;
 import com.jfixby.texture.slicer.api.TextureSlicingResult;
 
