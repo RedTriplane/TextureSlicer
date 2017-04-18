@@ -2,7 +2,7 @@
 package com.jfixby.texture.slicer.api;
 
 import java.io.Serializable;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class SlicesCompositionInfo implements Serializable {
 
@@ -20,7 +20,7 @@ public class SlicesCompositionInfo implements Serializable {
 	public int cell_height = 0;
 	public int cell_margin = 0;
 
-	public Vector<SliceInfo> tiles = new Vector<SliceInfo>();
+	public ArrayList<SliceInfo> tiles = new ArrayList<SliceInfo>();
 
 	public void addTile (final int i, final int j, final String postfix, final boolean is_empty, final double width,
 		final double height) {

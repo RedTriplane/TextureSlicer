@@ -2,10 +2,10 @@
 package com.jfixby.texture.slicer.api;
 
 import java.io.Serializable;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class SlicesCompositionsContainer implements Serializable {
 
-	public Vector<SlicesCompositionInfo> content = new Vector<SlicesCompositionInfo>();
+	public ArrayList<SlicesCompositionInfo> content = new ArrayList<SlicesCompositionInfo>();
 
 }
