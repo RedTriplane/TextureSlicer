@@ -13,7 +13,7 @@
           "tile_height": 512.0,
           "index_x": 0,
           "index_y": 0,
-          "postfix": "tile-114-0-0",
+          "postfix": "tile-837-0-0",
           "is_empty": false
         },
         {
@@ -21,7 +21,7 @@
           "tile_height": 152.0,
           "index_x": 0,
           "index_y": 1,
-          "postfix": "tile-281-0-1",
+          "postfix": "tile-7-0-1",
           "is_empty": false
         },
         {
@@ -29,7 +29,7 @@
           "tile_height": 512.0,
           "index_x": 1,
           "index_y": 0,
-          "postfix": "tile-379-1-0",
+          "postfix": "tile-97-1-0",
           "is_empty": false
         },
         {
@@ -37,7 +37,7 @@
           "tile_height": 152.0,
           "index_x": 1,
           "index_y": 1,
-          "postfix": "tile-583-1-1",
+          "postfix": "tile-330-1-1",
           "is_empty": false
         }
       ]
