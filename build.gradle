@@ -1,5 +1,5 @@
 ext {
-        scarabeiVersion = "a63e27032c"
+        scarabeiVersion = "1.5.1"
 }
 
 allprojects {
