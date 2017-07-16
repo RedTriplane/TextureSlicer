@@ -1,14 +1,11 @@
 
-package com.jfixby.texture.slicer.api;
+package com.jfixby.texture.slicer.api.io;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class SlicesCompositionInfo implements Serializable {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = -4138188908227530645L;
 
 	public String composition_asset_id_string;

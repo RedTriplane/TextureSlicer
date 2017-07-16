@@ -1,3 +1,4 @@
 include 'texture-slicer-api'
-include 'texture-slicer-red'
-include 'texture-slicer-test'
+include 'texture-slicer-io'
+
+

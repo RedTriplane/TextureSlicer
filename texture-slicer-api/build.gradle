@@ -1,0 +1,4 @@
+dependencies {
+     compile project(":texture-slicer-io")
+	 compile "com.github.Scarabei.Scarabei:scarabei-api:$scarabeiVersion"         
+}
