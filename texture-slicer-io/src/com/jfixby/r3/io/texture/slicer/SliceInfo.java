@@ -1,5 +1,5 @@
 
-package com.jfixby.texture.slicer.api.io;
+package com.jfixby.r3.io.texture.slicer;
 
 import java.io.Serializable;
 
