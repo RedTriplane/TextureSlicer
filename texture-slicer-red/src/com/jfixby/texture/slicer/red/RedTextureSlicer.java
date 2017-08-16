@@ -5,8 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import com.jfixby.r3.io.texture.slicer.SlicesCompositionInfo;
-import com.jfixby.scarabei.api.assets.ID;
-import com.jfixby.scarabei.api.assets.Names;
 import com.jfixby.scarabei.api.color.Color;
 import com.jfixby.scarabei.api.color.Colors;
 import com.jfixby.scarabei.api.debug.Debug;
@@ -19,6 +17,8 @@ import com.jfixby.scarabei.api.image.EditableColorMap;
 import com.jfixby.scarabei.api.image.ImageProcessing;
 import com.jfixby.scarabei.api.log.L;
 import com.jfixby.scarabei.api.math.IntegerMath;
+import com.jfixby.scarabei.api.names.ID;
+import com.jfixby.scarabei.api.names.Names;
 import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.texture.slicer.api.TextureSlicerComponent;
 import com.jfixby.texture.slicer.api.TextureSlicerSpecs;

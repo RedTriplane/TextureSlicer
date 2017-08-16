@@ -2,10 +2,10 @@
 package com.jfixby.texture.slicer.red;
 
 import com.jfixby.r3.io.texture.slicer.SlicesCompositionInfo;
-import com.jfixby.scarabei.api.assets.ID;
 import com.jfixby.scarabei.api.collections.Collection;
 import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.collections.List;
+import com.jfixby.scarabei.api.names.ID;
 import com.jfixby.texture.slicer.api.TextureSlicingResult;
 
 public class RedSlicerResult implements TextureSlicingResult {

@@ -5,14 +5,14 @@ import java.io.IOException;
 
 import com.jfixby.r3.io.texture.slicer.SlicesCompositionInfo;
 import com.jfixby.r3.io.texture.slicer.SlicesCompositionsContainer;
-import com.jfixby.scarabei.api.assets.ID;
-import com.jfixby.scarabei.api.assets.Names;
 import com.jfixby.scarabei.api.desktop.ImageAWT;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.LocalFileSystem;
 import com.jfixby.scarabei.api.json.Json;
 import com.jfixby.scarabei.api.json.JsonString;
 import com.jfixby.scarabei.api.log.L;
+import com.jfixby.scarabei.api.names.ID;
+import com.jfixby.scarabei.api.names.Names;
 import com.jfixby.scarabei.red.desktop.ScarabeiDesktop;
 import com.jfixby.scarabei.red.json.GoogleJson;
 import com.jfixby.texture.slicer.api.TextureSlicer;
